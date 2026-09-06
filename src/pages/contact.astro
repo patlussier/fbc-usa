@@ -1,0 +1,25 @@
+---
+import Base from "../layouts/Base.astro";
+import Section from "../components/Section.astro";
+---
+<Base title="Contact" description="How to reach ForBetterCommunity USA." hero={true}>
+  <div slot="hero" class="max-w-3xl">
+    <h1 class="text-3xl sm:text-4xl">Contact</h1>
+    <p class="mt-5 text-white/75 leading-relaxed">One address, read by the board.</p>
+  </div>
+  <Section>
+    <div class="max-w-2xl text-[16px]">
+      <p class="text-lg">
+        <a class="text-cyan underline underline-offset-4" href="mailto:contact@forbettercommunity.org">contact@forbettercommunity.org</a>
+      </p>
+      <p class="mt-6 text-slate leading-relaxed">
+        For questions about governance, filings or a potential partnership, write to the same address and
+        say which one it is. We answer partnership inquiries first.
+      </p>
+      <p class="mt-6 text-slate leading-relaxed">
+        Looking for the Canadian organization? It is at
+        <a class="text-cyan underline underline-offset-4" href="https://canada.forbettercommunity.org">canada.forbettercommunity.org</a>.
+      </p>
+    </div>
+  </Section>
+</Base>

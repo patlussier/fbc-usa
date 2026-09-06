@@ -1,0 +1,151 @@
+---
+import Base from "../layouts/Base.astro";
+import Section from "../components/Section.astro";
+const gallery = [
+  { src: "/img/santa-cruz-village.jpg", alt: "Homes in the community of Santa Cruz", caption: "Santa Cruz, El Paraíso. 2021." },
+  { src: "/img/santa-cruz-visit.jpg", alt: "A visit with a resident of the community", caption: "Field visit with residents. 2021." },
+  { src: "/img/santa-cruz-clinic.jpg", alt: "A local health post", caption: "Local health services. 2021." },
+  { src: "/img/santa-cruz-children.jpg", alt: "Children in the community", caption: "Children of Santa Cruz. 2021." },
+];
+---
+<Base
+  title="Our work"
+  description="The Santa Cruz project in El Paraíso, Honduras: a five-year plan for water, agriculture, education and health, with the record of what was built."
+  hero={true}
+  heroImage="/img/santa-cruz-village.jpg"
+>
+  <div slot="hero" class="max-w-2xl">
+    <h1 class="text-3xl sm:text-4xl font-semibold">Our work</h1>
+    <p class="mt-5 text-white/85 leading-relaxed">
+      What we planned, what was built, and where it stands today. Programs that are suspended are marked as suspended.
+    </p>
+  </div>
+
+  <Section kicker="Honduras · 2020-2022 · suspended" title="The Santa Cruz project">
+    <div class="prose-fbc text-[16px]">
+      <p>
+        Santa Cruz sits in the department of El Paraíso, Honduras. With the community we set three goals:
+        end extreme poverty in Santa Cruz, bring the poverty rate down to 10 percent, and create direct
+        local employment. For Better Community would walk alongside the community for five years, with
+        specialists and technicians preparing residents to take full control at the end of that period.
+      </p>
+    </div>
+
+    <figure class="mt-10">
+      <video
+        controls
+        preload="none"
+        poster="/img/santa-cruz-video-poster.jpg"
+        class="w-full bg-navy-ink"
+        width="1280" height="720"
+      >
+        <source src="/video/santa-cruz.mp4" type="video/mp4" />
+        <track src="/video/santa-cruz.en.vtt" kind="subtitles" srclang="en" label="English" default />
+        Your browser does not support embedded video.
+      </video>
+      <figcaption class="mt-3 text-[13px] text-slate">
+        The Santa Cruz project, filmed on site in 2022. Spanish narration, with English subtitles
+        adapted from the original. It presents the plan as it stood at the time, before the program
+        was suspended.
+      </figcaption>
+    </figure>
+  </Section>
+
+  <Section tone="sand" kicker="The plan" title="Four tracks, one sequence">
+    <div class="grid gap-10 lg:grid-cols-2">
+      <div class="prose-fbc text-[15px]">
+        <h3>Water first</h3>
+        <p>
+          Everything started with water, so the community would stop depending on the rainy season.
+          Reservoirs on the high ground of the site, feeding lined ponds below.
+        </p>
+        <h3>Then food, from the same water</h3>
+        <ul>
+          <li>Tilapia raised in the ponds</li>
+          <li>Vegetables grown vertically above them, through hydroponics</li>
+          <li>Cattle, pigs and poultry on dedicated ground</li>
+          <li>Beekeeping, chosen so the wooded part of the land would be preserved</li>
+          <li>An agro-industrial cooperative to hold it all, owned by the community</li>
+        </ul>
+      </div>
+      <div class="prose-fbc text-[15px]">
+        <h3>Education, at every level</h3>
+        <ul>
+          <li>Materials for preschool children, so they enter the system at all</li>
+          <li>Teaching materials for primary school</li>
+          <li>A trade school, and secondary students trained to administer the cooperative</li>
+          <li>Support to the Álvaro Contreras school so it could restore its growing areas and feed its own students</li>
+        </ul>
+        <h3>Women, money and health</h3>
+        <ul>
+          <li>Support for women and young mothers as a central axis, not an afterthought</li>
+          <li>Personal finance training, so families could manage and invest what they earned</li>
+          <li>Preventive health care</li>
+        </ul>
+      </div>
+    </div>
+  </Section>
+
+  <Section kicker="Principle" title="Work in return">
+    <div class="prose-fbc text-[16px]">
+      <p>
+        Every time residents received support, they gave a piece of work back to the community.
+        Not as a condition imposed from outside, but so that what arrived was never a handout.
+        It was earned, and it belonged to the people who earned it.
+      </p>
+      <p>
+        That principle is the reason the plan reads the way it does. A cooperative rather than a
+        distribution. A trade school rather than a scholarship. Ponds the community maintains rather
+        than water trucked in.
+      </p>
+    </div>
+  </Section>
+
+  <Section tone="sand" kicker="On the ground" title="Santa Cruz, 2021">
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {gallery.map((g) => (
+        <figure>
+          <img src={g.src} alt={g.alt} width="1400" height="930" class="w-full h-56 object-cover" loading="lazy" />
+          <figcaption class="mt-2 text-[13px] text-slate">{g.caption}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </Section>
+
+  <Section kicker="Status" title="Where the project stands">
+    <div class="prose-fbc text-[16px]">
+      <p>
+        The program is suspended. Following a change of national administration in Honduras, the
+        institutional conditions and approvals this kind of work depends on are no longer in place.
+        We took the decision to pause rather than continue a program we could not deliver to the standard
+        the community was promised.
+      </p>
+      <p>
+        Nothing was abandoned. We hold the plan, the engineering studies, the site assessment, the
+        relationships and the record, and we will resume if conditions allow.
+      </p>
+    </div>
+  </Section>
+
+  <Section tone="sand" kicker="2019 · completed" title="Deep-water reef research">
+    <div class="prose-fbc text-[16px]">
+      <p>
+        Volunteer technical divers assisted a university research team by recovering deep-water coral reef
+        samples from a wreck, to help document how those reefs function. Reefs sit at the base of a food
+        chain that coastal families depend on for both food and income, which is why a marine research
+        dive belongs in the work of an organization focused on self-sufficiency.
+      </p>
+    </div>
+  </Section>
+
+  <Section kicker="Guatemala · 2020" title="NGO law analysis">
+    <div class="prose-fbc text-[16px]">
+      <p>
+        We published an analysis of changes to the law governing nongovernmental organizations in Guatemala,
+        what those changes required of organizations working there, and what they would mean for the
+        communities those organizations serve. It is archived in our
+        <a href="/field-notes/">field notes</a>.
+      </p>
+    </div>
+  </Section>
+</Base>

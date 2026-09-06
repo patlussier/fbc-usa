@@ -1,0 +1,28 @@
+---
+import Base from "../../layouts/Base.astro";
+import Section from "../../components/Section.astro";
+import { getCollection } from "astro:content";
+const notes = (await getCollection("fieldnotes")).sort((a, b) => +b.data.date - +a.data.date);
+---
+<Base title="Field notes" description="Reporting from Honduras and Central America, published by ForBetterCommunity between 2020 and 2021." hero={true}>
+  <div slot="hero" class="max-w-3xl">
+    <h1 class="text-3xl sm:text-4xl">Field notes</h1>
+    <p class="mt-5 text-white/75 leading-relaxed">
+      Reporting gathered on the ground in Honduras and Central America and published between 2020 and 2021.
+      These pieces are archived as written. They describe the conditions of that period, not of today.
+    </p>
+  </div>
+  <Section>
+    <ol class="divide-y divide-line border-t border-line">
+      {notes.map((n) => (
+        <li class="py-6">
+          <p class="text-[12px] text-slate">{n.data.date.toLocaleDateString("en-CA", { year: "numeric", month: "long", day: "numeric" })}</p>
+          <h2 class="font-semibold text-xl mt-1">
+            <a class="hover:text-cyan" href={`/field-notes/${n.id}/`}>{n.data.title}</a>
+          </h2>
+          <p class="mt-2 text-slate text-[15px] leading-relaxed max-w-2xl">{n.data.summary}</p>
+        </li>
+      ))}
+    </ol>
+  </Section>
+</Base>

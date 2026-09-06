@@ -1,0 +1,126 @@
+---
+import Base from "../layouts/Base.astro";
+import Section from "../components/Section.astro";
+import { getCollection } from "astro:content";
+const notes = (await getCollection("fieldnotes")).sort((a, b) => +b.data.date - +a.data.date).slice(0, 3);
+---
+<Base
+  title="Together, make it happen"
+  description="For Better Community USA is a 501(c)(3) nonprofit incorporated in Montana, working with communities in Central America and the Caribbean toward self-sufficiency."
+  hero={true}
+  heroImage="/img/tegucigalpa-market.jpg"
+>
+  <div slot="hero" class="max-w-2xl">
+    <p class="eyebrow text-cyan">501(c)(3) nonprofit · Montana</p>
+    <h1 class="text-3xl sm:text-5xl font-semibold leading-[1.15] mt-4">
+      We succeed on the day a community no longer needs us.
+    </h1>
+    <p class="mt-6 text-white/85 text-lg leading-relaxed">
+      For Better Community works with small communities in Central America and the Caribbean,
+      where a modest, well-placed intervention changes what a family can do for itself.
+      Not aid that maintains. Capacity that stays.
+    </p>
+    <div class="mt-9 flex flex-wrap gap-3 text-sm">
+      <a href="/our-work/" class="navlink bg-cyan px-6 py-3 hover:bg-white hover:text-navy transition-colors">See our work</a>
+      <a href="/governance/" class="navlink border border-white/40 px-6 py-3 hover:border-cyan hover:text-cyan transition-colors">Who we are</a>
+    </div>
+  </div>
+
+  <Section kicker="How we work" title="Three principles, applied the same way every time">
+    <div class="grid gap-10 sm:grid-cols-3">
+      <div>
+        <div class="h-1 w-10 bg-cyan mb-4"></div>
+        <h3 class="font-semibold text-navy text-lg">Owned locally</h3>
+        <p class="mt-3 text-slate leading-relaxed text-[15px]">
+          A project belongs to the community that lives with it. Our role is to start it,
+          guide it and step back. If it only works while we are there, it does not work.
+        </p>
+      </div>
+      <div>
+        <div class="h-1 w-10 bg-cyan mb-4"></div>
+        <h3 class="font-semibold text-navy text-lg">Built to last without us</h3>
+        <p class="mt-3 text-slate leading-relaxed text-[15px]">
+          Cooperatives, irrigation, trade schools, access to banking. Infrastructure and skills
+          rather than distributions, because a distribution ends the day it stops.
+        </p>
+      </div>
+      <div>
+        <div class="h-1 w-10 bg-cyan mb-4"></div>
+        <h3 class="font-semibold text-navy text-lg">Environmentally honest</h3>
+        <p class="mt-3 text-slate leading-relaxed text-[15px]">
+          Self-sufficiency that exhausts the land is a delay, not a solution.
+          Water, waste and soil are part of every plan we support.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <section class="bg-sand">
+    <div class="mx-auto max-w-6xl px-5 py-16 sm:py-20 grid gap-12 lg:grid-cols-2 items-center">
+      <div>
+        <p class="eyebrow">Honduras · 2020-2022</p>
+        <h2 class="text-2xl sm:text-3xl font-semibold text-navy mt-3 rule-cyan">The Santa Cruz project</h2>
+        <p class="mt-6 text-slate leading-relaxed">
+          In the department of El Paraíso, the community set three goals with us: end extreme poverty
+          in Santa Cruz, create local employment, raise literacy. Around those goals we supported a food
+          cooperative, farmland under a five-year plan, an irrigation system, a trade school, access to
+          banking, better water distribution and health care.
+        </p>
+        <p class="mt-4 text-slate leading-relaxed">
+          The program is dormant today. We say so plainly rather than describe paused work in the present tense.
+        </p>
+        <p class="mt-6">
+          <a href="/our-work/" class="navlink text-cyan hover:text-navy">Read the full record →</a>
+        </p>
+      </div>
+      <figure>
+        <img src="/img/hero-agriculture.jpg" alt="A grower holding freshly harvested produce in a field" width="1920" height="1078" class="w-full h-auto" loading="lazy" />
+        <figcaption class="mt-3 text-[13px] text-slate">Honduras. Photograph from our field reporting, 2021.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <Section kicker="Where we stand" title="An honest status, not a campaign">
+    <div class="grid gap-10 lg:grid-cols-2">
+      <div class="prose-fbc text-[15px]">
+        <p>
+          Our Honduras programs, including Santa Cruz, are dormant. They were suspended as conditions
+          on the ground changed, and we have not restarted them.
+        </p>
+        <p>
+          For Better Community USA remains active as a legal entity, maintains its filings and its board,
+          and holds the record of what was built. When a new program opens, it will appear here with its dates.
+        </p>
+        <p>
+          Field operations in Cuba are carried by <a href="https://canada.forbettercommunity.org">For Better Community Canada</a>,
+          a separate legal entity with its own board and its own accounts.
+        </p>
+      </div>
+      <div class="border-l-4 border-cyan pl-6 self-center">
+        <p class="text-navy text-xl sm:text-2xl leading-snug font-medium">
+          "To be sustainable, this project needs to be owned by Santa Cruz citizens.
+          Our role is to instigate, assist and facilitate."
+        </p>
+        <p class="mt-3 text-slate text-[13px] uppercase tracking-wider">Santa Cruz project plan, 2020</p>
+      </div>
+    </div>
+  </Section>
+
+  <section class="bg-navy text-white">
+    <div class="mx-auto max-w-6xl px-5 py-16 sm:py-20">
+      <p class="eyebrow">Field notes</p>
+      <h2 class="text-2xl sm:text-3xl font-semibold mt-3 mb-8 rule-cyan">Reporting from the ground</h2>
+      <div class="grid gap-6 sm:grid-cols-3">
+        {notes.map((n) => (
+          <a href={`/field-notes/${n.id}/`} class="group border border-white/15 p-6 hover:border-cyan transition-colors">
+            <p class="text-[12px] uppercase tracking-wider text-cyan">
+              {n.data.date.toLocaleDateString("en-CA", { year: "numeric", month: "long" })}
+            </p>
+            <h3 class="text-lg mt-2 leading-snug font-medium group-hover:text-cyan transition-colors">{n.data.title}</h3>
+          </a>
+        ))}
+      </div>
+      <p class="mt-8"><a class="navlink text-cyan hover:text-white" href="/field-notes/">All field notes →</a></p>
+    </div>
+  </section>
+</Base>

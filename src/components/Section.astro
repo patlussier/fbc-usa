@@ -1,0 +1,11 @@
+---
+const { title, kicker, tone = "white" } = Astro.props;
+const bg = tone === "sand" ? "bg-sand" : tone === "navy" ? "bg-navy text-white" : "bg-white";
+---
+<section class={bg}>
+  <div class="mx-auto max-w-6xl px-5 py-16 sm:py-20">
+    {kicker && <p class="eyebrow">{kicker}</p>}
+    {title && <h2 class={`text-2xl sm:text-3xl font-semibold mt-3 mb-8 rule-cyan ${tone === "navy" ? "text-white" : "text-navy"}`}>{title}</h2>}
+    <slot />
+  </div>
+</section>

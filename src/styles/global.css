@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+/* Identité ForBetterCommunity, reprise du logo original :
+   navy #1f3f80, cyan #0098d8, typographie Poppins comme le site d'origine. */
+@theme {
+  --color-navy: #1f3f80;
+  --color-navy-deep: #16305f;
+  --color-navy-ink: #0e1f3d;
+  --color-cyan: #0098d8;
+  --color-cyan-soft: #e6f5fc;
+  --color-sand: #f4f6fa;
+  --color-slate: #5b6478;
+  --color-line: #dfe4ee;
+  --font-sans: "Poppins", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { background: #fff; color: #22283a; font-family: var(--font-sans); }
+
+h1, h2, h3 { letter-spacing: -0.01em; }
+
+.eyebrow {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--color-cyan);
+}
+.navlink {
+  font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.rule-cyan::after {
+  content: ""; display: block; width: 56px; height: 3px; background: var(--color-cyan); margin-top: 14px;
+}
+
+.prose-fbc { max-width: 68ch; }
+.prose-fbc p { margin-block: 1rem; line-height: 1.75; }
+.prose-fbc h2 { font-size: 1.5rem; font-weight: 600; color: var(--color-navy); margin-top: 2.5rem; margin-bottom: .75rem; }
+.prose-fbc h3 { font-weight: 600; color: var(--color-navy); margin-top: 1.75rem; margin-bottom: .5rem; }
+.prose-fbc ul { list-style: disc; padding-left: 1.25rem; margin-block: 1rem; }
+.prose-fbc li { margin-block: .35rem; line-height: 1.65; }
+.prose-fbc a { color: var(--color-cyan); text-decoration: underline; text-underline-offset: 3px; }
+.prose-fbc a:hover { color: var(--color-navy); }
+
+.skip:focus { position: fixed; top: .5rem; left: .5rem; z-index: 60; background: #fff; padding: .5rem .75rem; }

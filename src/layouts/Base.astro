@@ -1,0 +1,99 @@
+---
+import "../styles/global.css";
+const { title, description, hero = false, heroImage } = Astro.props;
+const nav = [
+  { href: "/mission/", label: "What we do" },
+  { href: "/our-work/", label: "Our work" },
+  { href: "/field-notes/", label: "Field notes" },
+  { href: "/governance/", label: "Who we are" },
+  { href: "/support/", label: "Support us" },
+];
+const path = Astro.url.pathname;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} — For Better Community USA</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <a href="#main" class="skip sr-only focus:not-sr-only">Skip to content</a>
+
+    <header class="bg-navy text-white">
+      <div class="mx-auto max-w-6xl px-5 h-[86px] flex items-center gap-8">
+        <a href="/" class="shrink-0">
+          <img src="/img/logo-fbc-white.png" alt="For Better Community" width="947" height="241" class="h-11 w-auto" />
+        </a>
+        <nav class="ml-auto hidden md:flex items-center gap-7">
+          {nav.map((i) => (
+            <a
+              href={i.href}
+              class={`navlink transition-colors hover:text-cyan ${path.startsWith(i.href) ? "text-cyan" : "text-white"}`}
+            >{i.label}</a>
+          ))}
+          <a href="/contact/" class="navlink bg-cyan text-white px-4 py-2.5 hover:bg-white hover:text-navy transition-colors">Contact</a>
+        </nav>
+        <nav class="ml-auto flex md:hidden gap-4 text-[12px] uppercase tracking-wider">
+          <a href="/our-work/" class="hover:text-cyan">Work</a>
+          <a href="/governance/" class="hover:text-cyan">Who we are</a>
+          <a href="/contact/" class="text-cyan">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    {hero && (
+      <section class="relative bg-navy-ink text-white overflow-hidden">
+        {heroImage && (
+          <img src={heroImage} alt="" aria-hidden="true"
+               class="absolute inset-0 h-full w-full object-cover object-[70%_center] opacity-75" />
+        )}
+        <div class="absolute inset-0 bg-gradient-to-r from-navy-ink/92 via-navy-ink/70 to-navy-ink/20"></div>
+        <div class="relative mx-auto max-w-6xl px-5 py-16 sm:py-24">
+          <slot name="hero" />
+        </div>
+      </section>
+    )}
+
+    <main id="main" class="flex-1">
+      <slot />
+    </main>
+
+    <footer class="bg-navy text-white/75 text-[13px]">
+      <div class="mx-auto max-w-6xl px-5 py-12 grid gap-10 sm:grid-cols-3">
+        <div>
+          <img src="/img/logo-fbc-white.png" alt="For Better Community" width="947" height="241" class="h-10 w-auto" />
+          <p class="mt-4 leading-relaxed">
+            A 501(c)(3) nonprofit corporation incorporated in the State of Montana.
+            Montana Business ID D1157783.
+          </p>
+        </div>
+        <div>
+          <p class="text-white font-semibold uppercase tracking-wider text-[12px]">Elsewhere</p>
+          <ul class="mt-3 space-y-1.5">
+            <li><a class="hover:text-cyan" href="https://canada.forbettercommunity.org">For Better Community Canada</a></li>
+            <li><a class="hover:text-cyan" href="https://forbettercommunity.org">Choose your region</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-white font-semibold uppercase tracking-wider text-[12px]">Contact</p>
+          <p class="mt-3"><a class="hover:text-cyan" href="mailto:contact@forbettercommunity.org">contact@forbettercommunity.org</a></p>
+        </div>
+      </div>
+      <div class="border-t border-white/15">
+        <div class="mx-auto max-w-6xl px-5 py-5 text-[12px] text-white/50 flex flex-wrap gap-x-6 gap-y-2 justify-between">
+          <span>Together, make it happen!</span>
+          <span>For Better Community USA and For Better Community Canada are two independent legal entities.</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

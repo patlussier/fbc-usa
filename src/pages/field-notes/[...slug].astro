@@ -1,0 +1,29 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const notes = await getCollection("fieldnotes");
+  return notes.map((note) => ({ params: { slug: note.id }, props: { note } }));
+}
+const { note } = Astro.props;
+const { Content } = await render(note);
+---
+<Base title={note.data.title} description={note.data.summary} hero={true}>
+  <div slot="hero" class="max-w-3xl">
+    <p class="text-[11px] uppercase tracking-[0.18em] text-cyan font-semibold">
+      Archived · {note.data.date.toLocaleDateString("en-CA", { year: "numeric", month: "long", day: "numeric" })}
+    </p>
+    <h1 class="text-3xl sm:text-4xl mt-4 leading-tight">{note.data.title}</h1>
+  </div>
+  <div class="mx-auto max-w-5xl px-5 py-14">
+    <div class="border-l-2 border-cyan pl-4 text-[13px] text-slate max-w-2xl">
+      This piece is published as it appeared at the time. It reflects conditions
+      as of {note.data.date.getFullYear()} and has not been updated.
+    </div>
+    <article class="prose-fbc mt-8 text-[16px]">
+      <Content />
+    </article>
+    <p class="mt-12 text-[14px]"><a class="text-cyan underline underline-offset-4" href="/field-notes/">← All field notes</a></p>
+  </div>
+</Base>

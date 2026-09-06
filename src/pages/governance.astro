@@ -1,0 +1,65 @@
+---
+import Base from "../layouts/Base.astro";
+import Section from "../components/Section.astro";
+const board = [
+  { name: "Patrick Lussier", role: "Founder and Director" },
+  { name: "Maryse Lehoux", role: "Treasurer" },
+  { name: "Eric Lussier", role: "Director" },
+  { name: "Irma A. Baquedano Canales", role: "Director" },
+];
+const documents = [
+  "Certificate of incorporation, State of Montana",
+  "IRS determination letter, 501(c)(3)",
+  "Bylaws, as adopted and signed",
+  "Consent of Directors and Consent of Members",
+  "Conflict of Interest Policy",
+  "IRS Form 1023 and annual Form 990 filings",
+];
+---
+<Base title="Governance and transparency" description="Board, incorporation, governing documents and filings of ForBetterCommunity USA, a 501(c)(3) nonprofit in Montana." hero={true}>
+  <div slot="hero" class="max-w-3xl">
+    <h1 class="text-3xl sm:text-4xl">Governance and transparency</h1>
+    <p class="mt-5 text-white/75 leading-relaxed">
+      A small organization asking for trust owes people the ability to check.
+      Here is who governs it, under what documents, and what it files.
+    </p>
+  </div>
+
+  <Section kicker="The entity" title="ForBetterCommunity USA">
+    <dl class="grid gap-x-10 gap-y-4 sm:grid-cols-2 text-[15px] max-w-3xl">
+      <div><dt class="text-slate text-[13px] uppercase tracking-wide">Legal form</dt><dd class="mt-1">Public benefit corporation with members</dd></div>
+      <div><dt class="text-slate text-[13px] uppercase tracking-wide">Tax status</dt><dd class="mt-1">501(c)(3) nonprofit, exemption granted by the IRS</dd></div>
+      <div><dt class="text-slate text-[13px] uppercase tracking-wide">Jurisdiction</dt><dd class="mt-1">State of Montana, United States</dd></div>
+      <div><dt class="text-slate text-[13px] uppercase tracking-wide">Montana Business ID</dt><dd class="mt-1">D1157783</dd></div>
+      <div><dt class="text-slate text-[13px] uppercase tracking-wide">Incorporated</dt><dd class="mt-1">May 18, 2020</dd></div>
+      <div><dt class="text-slate text-[13px] uppercase tracking-wide">Standing</dt><dd class="mt-1">Active and in good standing</dd></div>
+    </dl>
+    <p class="mt-6 text-[15px] text-slate max-w-2xl leading-relaxed">
+      Donations to ForBetterCommunity USA are tax-deductible to the extent allowed by U.S. federal law.
+      A separate entity, ForBetterCommunity Canada, operates under Canadian law with its own board and
+      its own bank account. The two do not share funds.
+    </p>
+  </Section>
+
+  <Section tone="sand" kicker="Board" title="Who governs the organization">
+    <ul class="grid gap-4 sm:grid-cols-2 max-w-3xl">
+      {board.map((m) => (
+        <li class="bg-white border border-line p-4">
+          <p class="font-semibold">{m.name}</p>
+          <p class="text-slate text-[14px] mt-0.5">{m.role}</p>
+        </li>
+      ))}
+    </ul>
+  </Section>
+
+  <Section kicker="Documents" title="Governing documents and filings">
+    <ul class="max-w-2xl divide-y divide-line border-t border-line text-[15px]">
+      {documents.map((d) => <li class="py-3">{d}</li>)}
+    </ul>
+    <p class="mt-6 text-[15px] text-slate max-w-2xl leading-relaxed">
+      Copies are available on request at
+      <a class="text-cyan underline underline-offset-4" href="mailto:contact@forbettercommunity.org">contact@forbettercommunity.org</a>.
+      Our IRS filings are also public through the IRS Tax Exempt Organization Search.
+    </p>
+  </Section>
+</Base>
