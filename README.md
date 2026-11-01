@@ -32,23 +32,11 @@ summary: "Une phrase de résumé."
 Le texte, en paragraphes.
 ```
 
-## Déploiement (à faire)
+## Déploiement
 
-Coolify sur le VPS, image Nginx alpine servant `dist/`.
-Dockerfile à créer au moment de la bascule :
+En ligne depuis le 2026-09-06 sur `usa.forbettercommunity.org` et `usa2.forbettercommunity.org`.
 
-```dockerfile
-FROM node:22-alpine AS build
-WORKDIR /app
-COPY package*.json ./
-RUN npm ci
-COPY . .
-RUN npm run build
-
-FROM nginx:alpine
-COPY --from=build /app/dist /usr/share/nginx/html
-RUN echo "ok" > /usr/share/nginx/html/health
-EXPOSE 80
-```
-
-Rappel Coolify : passer `portsExposes` à 80, sinon Bad Gateway.
+- Coolify sur le VPS personnel, application `usa-site`, construite depuis la branche `main` avec le `Dockerfile` du dépôt (build Astro, puis Nginx alpine servant `dist/`).
+- **Déploiement automatique** : chaque envoi sur `main` reconstruit et redéploie le site. Pour un commit qui ne doit pas déployer (documentation seulement), ajouter `[skip ci]` au message.
+- Santé : `/health` répond `ok`, utilisé par le healthcheck Docker (d'où `curl` dans l'image).
+- Rappel Coolify : `portsExposes` à 80, sinon Bad Gateway.
