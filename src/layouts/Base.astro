@@ -24,6 +24,22 @@ const path = Astro.url.pathname;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- Statistiques Umami : un site Umami par domaine (usa. et usa2. servent ce même code) -->
+    <script is:inline>
+      (function () {
+        var ids = {
+          "usa.forbettercommunity.org": "0a5ac09a-fd57-409a-9010-4ed27865768a",
+          "usa2.forbettercommunity.org": "1547e8fd-60d1-4f3d-b8fa-3629c0e8fc02",
+        };
+        var id = ids[location.hostname];
+        if (!id) return;
+        var s = document.createElement("script");
+        s.defer = true;
+        s.src = "https://stats.patlussier.com/script.js";
+        s.setAttribute("data-website-id", id);
+        document.head.appendChild(s);
+      })();
+    </script>
   </head>
   <body class="min-h-screen flex flex-col">
     <a href="#main" class="skip sr-only focus:not-sr-only">Skip to content</a>
